@@ -1,0 +1,20 @@
+{
+    "tables": [
+        {
+            "table_name": "category_to_category",
+            "entity_name": "CategoryToCategory",
+            "base_path": "Global\\Categories\\CategoryToCategory",
+            "operation": "crud",
+            "columns": [
+                {
+                    "name": "parent_id",
+                    "type": "integer"
+                },
+                {
+                    "name": "son_id",
+                    "type": "integer"
+                }
+            ]
+        }
+    ]
+}

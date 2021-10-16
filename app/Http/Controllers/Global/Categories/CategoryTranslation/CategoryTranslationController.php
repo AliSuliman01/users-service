@@ -1,0 +1,58 @@
+<?php
+
+
+namespace App\Http\Controllers\Global\Categories\CategoryTranslation;
+
+
+use App\Helpers\Helpers;
+use App\Http\Controllers\Controller;
+use App\Domain\Global\Categories\CategoryTranslation\Actions\CategoryTranslationStoreAction;
+use App\Domain\Global\Categories\CategoryTranslation\Actions\CategoryTranslationDestroyAction;
+use App\Domain\Global\Categories\CategoryTranslation\Actions\CategoryTranslationUpdateAction;
+use App\Domain\Global\Categories\CategoryTranslation\DTO\CategoryTranslationDTO;
+use App\Http\Requests\Global\Categories\CategoryTranslation\CategoryTranslationStoreRequest;
+use App\Http\Requests\Global\Categories\CategoryTranslation\CategoryTranslationUpdateRequest;
+use App\Http\Requests\Global\Categories\CategoryTranslation\CategoryTranslationDestroyRequest;
+use App\Http\Requests\Global\Categories\CategoryTranslation\CategoryTranslationShowRequest;
+use App\Http\ViewModels\Global\Categories\CategoryTranslation\CategoryTranslationShowVM;
+use App\Http\ViewModels\Global\Categories\CategoryTranslation\CategoryTranslationIndexVM;
+
+class CategoryTranslationController extends Controller
+{
+
+    public function index(){
+
+        return response()->json(Helpers::createSuccessResponse((new CategoryTranslationIndexVM())->toArray()));
+    }
+
+    public function show(CategoryTranslationShowRequest $request){
+
+        return response()->json(Helpers::createSuccessResponse((new CategoryTranslationShowVM(['id' => $request->route('id')]))->toArray()));
+    }
+
+    public function store(CategoryTranslationStoreRequest $request){
+        $data = $request->validated() ;
+
+        $categoryTranslationDTO = CategoryTranslationDTO::fromRequest($data);
+
+        $categoryTranslation = CategoryTranslationStoreAction::execute($categoryTranslationDTO);
+
+        return response()->json(Helpers::createSuccessResponse((new CategoryTranslationShowVM($categoryTranslation->toArray()))->toArray()));
+    }
+
+    public function update(CategoryTranslationUpdateRequest $request){
+        $data = $request->validated() ;
+
+        $categoryTranslationDTO = CategoryTranslationDTO::fromRequest($data);
+
+        $categoryTranslation = CategoryTranslationUpdateAction::execute($categoryTranslationDTO);
+
+        return response()->json(Helpers::createSuccessResponse((new CategoryTranslationShowVM($categoryTranslation->toArray()))->toArray()));
+    }
+
+    public function destroy(CategoryTranslationDestroyRequest $request){
+
+        return response()->json(Helpers::createSuccessResponse(CategoryTranslationDestroyAction::execute(CategoryTranslationDTO::fromRequest($request->validated()))));
+    }
+
+}
