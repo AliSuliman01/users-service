@@ -14,9 +14,9 @@ class RequestException extends Exception
     protected $code;
     protected $isLogin;
 
-    public function __construct($message ,$detailed_error = null, $code = null,$isLogin = false, Throwable $previous = null)
+    public function __construct($message,$detailed_error = null, $code = null,$isLogin = false, Throwable $previous = null)
     {
-        parent::__construct(json_encode($message), $code, $previous);
+        parent::__construct($message, $code, $previous);
         $this->message = $message;
         $this->detailed_error = $detailed_error;
         $this->code = $code;
@@ -25,6 +25,6 @@ class RequestException extends Exception
 
     public function render(Request $request)
     {
-        return response()->json(Helpers::createErrorResponse($this->message,$this->detailed_error,$this->code,$this->isLogin), $this->code);
+        return response()->json(Helpers::createErrorResponse(json_decode($this->message, true),$this->detailed_error,$this->code,$this->isLogin), $this->code);
     }
 }

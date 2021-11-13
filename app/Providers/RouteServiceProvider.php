@@ -53,8 +53,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map(){
         $this->mapApiRoutes();
         $this->mapWebRoutes();
-        $this->mapGlobalRoutes('global');
-        $this->mapMaterialRoutes();
+        $this->mapGlobalRoutes('routes/Global');
+//        $this->mapMaterialRoutes('routes/Materials');
     }
 
     private function mapApiRoutes(){
@@ -73,28 +73,30 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::middleware('api')
             ->namespace($this->namespace)
-            ->prefix($prefix)
-            ->group(base_path('routes/Global/Languages/languages.php'));
-        $this->mapCategoriesRoutes($prefix);
+            ->group(base_path("$prefix/Languages/languages.php"));
+        $this->mapCategoriesRoutes("$prefix/Categories");
+        $this->mapUsersRoutes("$prefix/Users");
     }
 
     private function mapCategoriesRoutes($prefix=''){
         Route::middleware('api')
             ->namespace($this->namespace)
-            ->prefix($prefix)
-            ->group(base_path('routes/Global/Categories/Categories/categories.php'));
+            ->group(base_path("$prefix/Categories/categories.php"));
         Route::middleware('api')
             ->namespace($this->namespace)
-            ->prefix($prefix)
-            ->group(base_path('routes/Global/Categories/CategoryToCategory/category_to_category.php'));
+            ->group(base_path("$prefix/CategoryToCategory/category_to_category.php"));
         Route::middleware('api')
             ->namespace($this->namespace)
-            ->prefix($prefix)
-            ->group(base_path('routes/Global/Categories/CategoryImages/category_images.php'));
+            ->group(base_path("$prefix/CategoryImages/category_images.php"));
         Route::middleware('api')
             ->namespace($this->namespace)
-            ->prefix($prefix)
-            ->group(base_path('routes/Global/Categories/CategoryTranslation/category_translation.php'));
+            ->group(base_path("$prefix/CategoryTranslation/category_translation.php"));
+    }
+    private function mapUsersRoutes($prefix=''){
+
+        Route::middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path("$prefix/Users/users.php"));
     }
     private function mapMaterialRoutes($prefix=''){
 

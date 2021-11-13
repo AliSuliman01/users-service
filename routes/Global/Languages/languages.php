@@ -6,7 +6,7 @@ use App\Http\Controllers\Global\Languages\LanguageController;
 Route::group(['prefix' => 'languages'],
 	function () {
 		Route::get('{id}', [LanguageController::class,'show']);
-		Route::get('', [LanguageController::class,'index']);
+		Route::get('', [LanguageController::class,'index'])->middleware(['auth:api']);
 		Route::group([
 			'middleware' => ['auth:api']
 		], function () {
