@@ -1,18 +1,14 @@
 {
     "tables": [
         {
-            "table_name": "category_to_category",
-            "entity_name": "CategoryToCategory",
-            "base_path": "Global\\Categories\\CategoryToCategory",
+            "table_name": "roles",
+            "entity_name": "Role",
+            "base_path": "Global\\Users\\Roles",
             "operation": "crud",
             "columns": [
                 {
-                    "name": "parent_id",
-                    "type": "integer"
-                },
-                {
-                    "name": "son_id",
-                    "type": "integer"
+                    "name": "name",
+                    "type": "string"
                 }
             ]
         }

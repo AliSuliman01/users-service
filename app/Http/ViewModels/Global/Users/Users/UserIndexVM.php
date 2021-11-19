@@ -8,7 +8,7 @@ use Illuminate\Contracts\Support\Arrayable;
 class UserIndexVM implements Arrayable
 {
     private function data(){
-        return User::paginate()->get();
+        return User::paginate();
     }
     /**
      * @inheritDoc

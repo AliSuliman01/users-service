@@ -1,1 +1,1 @@
-require('./bootstrap');
+phprequire('./bootstrap');

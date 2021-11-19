@@ -33,10 +33,11 @@ class UserController extends Controller
 
     public function log_in(UserLogInRequest $request){
         $user = (new UserShowVM(UserDTO::fromRequest($request->validated())))->toArray();
+
         if(!Hash::check($request->password, $user->password)){
             return response()->json(Helpers::createErrorResponse('invalid credentials'));
         }
-        $token = $user->createToken('personal access token');
+        $token = $user->createToken('personal access token',$user->arrayOrRoles() ?? []);
         $user->setAttribute('token', $token->accessToken);
         return response()->json(Helpers::createSuccessResponse($user));
     }
