@@ -28,6 +28,10 @@ class UserController extends Controller
 
         // TODO: send sms or gmail verification message
 
+
+        $token = $user->createToken('personal access token',$user->arrayOrRoles() ?? []);
+        $user->setAttribute('token', $token->accessToken);
+
         return response()->json(Helpers::createSuccessResponse($user), 200);
     }
 
