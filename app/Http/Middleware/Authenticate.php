@@ -21,6 +21,6 @@ class Authenticate extends Middleware
     }
     protected function unauthenticated($request, array $guards)
     {
-        throw new RequestException(json_encode('unauthorized'),"",401);
+        throw new RequestException('unauthorized',"",401);
     }
 }

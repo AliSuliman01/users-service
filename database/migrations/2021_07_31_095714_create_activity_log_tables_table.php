@@ -17,9 +17,6 @@ class CreateActivityLogTablesTable extends Migration
             Schema::create('activity_log_tables', function (Blueprint $table) {
                 $table->id();
                 $table->string('table_name');
-                $table->foreignId('created_by_user_id')->nullable()->constrained('users')->onDelete('cascade');
-                $table->foreignId('updated_by_user_id')->nullable()->constrained('users')->onDelete('cascade');
-                $table->foreignId('deleted_by_user_id')->nullable()->constrained('users')->onDelete('cascade');
                 $table->timestamps();
                 $table->softDeletes();
             });

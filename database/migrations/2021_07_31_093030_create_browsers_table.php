@@ -17,9 +17,6 @@ class CreateBrowsersTable extends Migration
             Schema::create('browsers', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
-                $table->foreignId('created_by_user_id')->nullable()->constrained('users')->onDelete('cascade');
-                $table->foreignId('updated_by_user_id')->nullable()->constrained('users')->onDelete('cascade');
-                $table->foreignId('deleted_by_user_id')->nullable()->constrained('users')->onDelete('cascade');
                 $table->timestamps();
                 $table->softDeletes();
             });

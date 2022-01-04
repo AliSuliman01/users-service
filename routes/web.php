@@ -19,7 +19,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/database', function (){return view('database',['tables' => DB::select('SHOW TABLES')]);})->name('dashboard.database');
-Route::get('/endpoints',  function (){return view('endpoints');})->name('dashboard.endpoints');
-
-Auth::routes();

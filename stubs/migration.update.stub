@@ -13,9 +13,14 @@ class {{ class }} extends Migration
      */
     public function up()
     {
-        Schema::table('{{ table }}', function (Blueprint $table) {
-            //
-        });
+        try{
+            Schema::table('{{ table }}', function (Blueprint $table) {
+                //
+            });
+        }catch (\Exception $e){
+            $this->down();
+            throw $e;
+        }
     }
 
     /**

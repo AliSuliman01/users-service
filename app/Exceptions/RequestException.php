@@ -2,7 +2,7 @@
 
 namespace App\Exceptions;
 
-use App\Helpers\Helpers;
+use App\Helpers\Response;
 use Illuminate\Http\Request;
 use Exception;
 use Throwable;
@@ -25,6 +25,6 @@ class RequestException extends Exception
 
     public function render(Request $request)
     {
-        return response()->json(Helpers::createErrorResponse(json_decode($this->message, true),$this->detailed_error,$this->code,$this->isLogin), $this->code);
+        return response()->json(Response::error($this->message,$this->detailed_error), $this->code);
     }
 }

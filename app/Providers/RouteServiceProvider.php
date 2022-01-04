@@ -51,10 +51,13 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
     public function map(){
-        $this->mapApiRoutes();
         $this->mapWebRoutes();
-        $this->mapGlobalRoutes('routes/Global');
-//        $this->mapMaterialRoutes('routes/Materials');
+        Route::group(['prefix' => 'api'],function (){
+            Route::group(['prefix' => 'v1'],function(){
+                $this->mapApiRoutes();
+                $this->mapBaseRoutes('routes/Base');
+            });
+        });
     }
 
     private function mapApiRoutes(){
@@ -69,7 +72,7 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
     }
-    private function mapGlobalRoutes($prefix=''){
+    private function mapBaseRoutes($prefix=''){
 
         Route::middleware('api')
             ->namespace($this->namespace)
@@ -97,8 +100,21 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('api')
             ->namespace($this->namespace)
             ->group(base_path("$prefix/Users/users.php"));
-    }
-    private function mapMaterialRoutes($prefix=''){
+        Route::middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path("$prefix/Roles/roles.php"));
+        $this->mapActivitiesRoutes("$prefix/Activities");
 
+    }
+    private function mapActivitiesRoutes($prefix=''){
+        Route::middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path("$prefix/ActivityTypes/ActivityTypes/activity_types.php"));
+        Route::middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path("$prefix/Browsers/Browsers/browsers.php"));
+        Route::middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path("$prefix/Platforms/Platforms/platforms.php"));
     }
 }

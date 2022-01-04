@@ -16,12 +16,6 @@ class CreateDeviceTypesTable extends Migration
         Schema::create('device_types', function (Blueprint $table) {
             $table->id();
             $table->string('name',191);
-            $table->foreignId('parent_id')->nullable()->constrained('device_types')->cascadeOnDelete();
-
-            $table->foreignId('created_by_user_id')->nullable()->constrained('users')->cascadeOnDelete();
-            $table->foreignId('updated_by_user_id')->nullable()->constrained('users')->cascadeOnDelete();
-            $table->foreignId('deleted_by_user_id')->nullable()->constrained('users')->cascadeOnDelete();
-
             $table->timestamps();
             $table->softDeletes();
         });

@@ -18,9 +18,6 @@ class CreatePlatformVersionsTable extends Migration
                 $table->id();
                 $table->foreignId('platform_id')->constrained()->cascadeOnDelete();
                 $table->string('version');
-                $table->foreignId('created_by_user_id')->nullable()->constrained('users')->onDelete('cascade');
-                $table->foreignId('updated_by_user_id')->nullable()->constrained('users')->onDelete('cascade');
-                $table->foreignId('deleted_by_user_id')->nullable()->constrained('users')->onDelete('cascade');
                 $table->timestamps();
                 $table->softDeletes();
             });

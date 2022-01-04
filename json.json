@@ -1,9 +1,9 @@
 {
     "tables": [
         {
-            "table_name": "roles",
-            "entity_name": "Role",
-            "base_path": "Global\\Users\\Roles",
+            "table_name": "tests",
+            "entity_name": "Test",
+            "base_path": "Tests",
             "operation": "crud",
             "columns": [
                 {
