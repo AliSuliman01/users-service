@@ -10,6 +10,20 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    private const RouteFiles = [
+        'routes/api.php',
+        'routes/Categories/Categories/categories.php',
+        'routes/Categories/CategoryToCategory/category_to_category.php',
+        'routes/Categories/CategoryImages/category_images.php',
+        'routes/Categories/CategoryTranslation/category_translation.php',
+        'routes/Languages/languages.php',
+        'routes/Server/server.php',
+        'routes/Users/Users/users.php',
+        'routes/Users/Roles/roles.php',
+        "routes/Users/Activities/ActivityTypes/ActivityTypes/activity_types.php",
+        "routes/Users/Activities/Browsers/Browsers/browsers.php",
+        "routes/Users/Activities/Platforms/Platforms/platforms.php",
+    ];
     /**
      * The path to the "home" route for your application.
      *
@@ -50,71 +64,21 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
     }
-    public function map(){
-        $this->mapWebRoutes();
-        Route::group(['prefix' => 'api'],function (){
-            Route::group(['prefix' => 'v1'],function(){
-                $this->mapApiRoutes();
-                $this->mapBaseRoutes('routes/Base');
-            });
-        });
-    }
 
-    private function mapApiRoutes(){
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
-    }
-    private function mapWebRoutes(){
+    public function map()
+    {
 
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
-    }
-    private function mapBaseRoutes($prefix=''){
 
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path("$prefix/Languages/languages.php"));
-        $this->mapCategoriesRoutes("$prefix/Categories");
-        $this->mapUsersRoutes("$prefix/Users");
-    }
-
-    private function mapCategoriesRoutes($prefix=''){
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path("$prefix/Categories/categories.php"));
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path("$prefix/CategoryToCategory/category_to_category.php"));
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path("$prefix/CategoryImages/category_images.php"));
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path("$prefix/CategoryTranslation/category_translation.php"));
-    }
-    private function mapUsersRoutes($prefix=''){
-
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path("$prefix/Users/users.php"));
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path("$prefix/Roles/roles.php"));
-        $this->mapActivitiesRoutes("$prefix/Activities");
-
-    }
-    private function mapActivitiesRoutes($prefix=''){
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path("$prefix/ActivityTypes/ActivityTypes/activity_types.php"));
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path("$prefix/Browsers/Browsers/browsers.php"));
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path("$prefix/Platforms/Platforms/platforms.php"));
+        Route::group(['prefix' => 'api'], function () {
+            Route::group(['prefix' => 'v1'], function () {
+                foreach (self::RouteFiles as $routeFile)
+                    Route::middleware('api')
+                        ->namespace($this->namespace)
+                        ->group(base_path($routeFile));
+            });
+        });
     }
 }

@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('categories', \App\Http\Controllers\Base\Categories\Categories\CategoryController::class);
+Route::apiResource('categories', \App\Http\Controllers\Categories\Categories\CategoryController::class);

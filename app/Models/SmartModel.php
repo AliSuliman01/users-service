@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Domain\Global\Configs\Model\Config;
-use App\Domain\Global\Users\Activities\ActivityLog\Actions\ActivityLogStoreAction;
-use App\Domain\Global\Users\Activities\ActivityLog\DTO\ActivityLogDTO;
-use App\Domain\Global\Users\Activities\ActivityTypes\ActivityTypes\Model\ActivityType;
+use App\Domain\Configs\Model\Config;
+use App\Domain\Users\Activities\ActivityLog\Actions\ActivityLogStoreAction;
+use App\Domain\Users\Activities\ActivityLog\DTO\ActivityLogDTO;
+use App\Domain\Users\Activities\ActivityTypes\ActivityTypes\Model\ActivityType;
 use App\Exceptions\RequestException;
 use App\Helpers\Response;
 use Illuminate\Database\Eloquent\Model;
