@@ -17,7 +17,7 @@ class CategoryUpdateAction
         CategoryDTO $categoryDTO
     ){
 
-        $category->update(array_filter($categoryDTO->toArray()));
+        $category->update(array_null_filter($categoryDTO->toArray()));
         $category->save();
         return $category;
     }

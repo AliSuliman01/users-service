@@ -17,7 +17,8 @@ class CreateActivityTypeTranslationTable extends Migration
             Schema::create('activity_type_translation', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('activity_type_id')->constrained()->cascadeOnDelete();
-                $table->foreignId('language_id')->constrained()->cascadeOnDelete();
+                $table->string('language_code');
+                $table->foreign('language_code')->references('language_code')->on('languages');
                 $table->string('name');
                 $table->string('description')->nullable();
                 $table->foreignId('created_by_user_id')->nullable()->constrained('users')->onDelete('cascade');

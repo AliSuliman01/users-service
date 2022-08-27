@@ -1,0 +1,126 @@
+{
+    "languages": [
+        {
+            "language_code": "en",
+            "name": "english"
+        },
+        {
+            "language_code": "ar",
+            "name": "arabic"
+        }
+    ],
+    "pages": [
+        {
+            "id": 1,
+            "name": "home_page",
+            "categories": [
+                {
+                    "id": 1,
+                    "translations": [
+                        {
+                            "id": 1,
+                            "language_code": "en",
+                            "category_id": 1,
+                            "name": "home_page_header",
+                            "description": null,
+                            "notes": null
+                        }
+                    ],
+                    "categories": [
+                        {
+                            "id": 2,
+                            "parent_category_id": 1,
+                            "translations": [
+                                {
+                                    "id": 2,
+                                    "language_code": "en",
+                                    "category_id": 2,
+                                    "name": "all",
+                                    "description": null,
+                                    "notes": null
+                                }
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "parent_category_id": 1,
+                            "translations": [
+                                {
+                                    "id": 3,
+                                    "language_code": "en",
+                                    "category_id": 3,
+                                    "name": "education",
+                                    "description": null,
+                                    "notes": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "translations": [
+                        {
+                            "id": 4,
+                            "language_code": "en",
+                            "category_id": 4,
+                            "name": "home_page_body",
+                            "description": null,
+                            "notes": null
+                        }
+                    ],
+                    "categories": [
+                        {
+                            "id": 5,
+                            "parent_category_id": 4,
+                            "sequence": 1,
+                            "translations": [
+                                {
+                                    "id": 5,
+                                    "language_code": "en",
+                                    "category_id": 5,
+                                    "name": "featured",
+                                    "description": null,
+                                    "notes": null
+                                }
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "parent_category_id": 4,
+                            "sequence": 2,
+                            "translations": [
+                                {
+                                    "id": 6,
+                                    "language_code": "en",
+                                    "category_id": 6,
+                                    "name": "recommended",
+                                    "description": null,
+                                    "notes": null
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "search_page",
+            "categories": [
+            ]
+        },
+        {
+            "id": 3,
+            "name": "progress_page",
+            "categories": [
+            ]
+        },
+        {
+            "id": 4,
+            "name": "profile_page",
+            "categories": [
+            ]
+        }
+    ]
+}

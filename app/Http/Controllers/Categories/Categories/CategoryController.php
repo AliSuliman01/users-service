@@ -13,8 +13,6 @@ use App\Domain\Categories\Categories\Actions\CategoryUpdateAction;
 use App\Domain\Categories\Categories\DTO\CategoryDTO;
 use App\Http\Requests\Categories\Categories\CategoryStoreRequest;
 use App\Http\Requests\Categories\Categories\CategoryUpdateRequest;
-use App\Http\Requests\Categories\Categories\CategoryDestroyRequest;
-use App\Http\Requests\Categories\Categories\CategoryShowRequest;
 use App\Http\ViewModels\Categories\Categories\CategoryShowVM;
 use App\Http\ViewModels\Categories\Categories\CategoryIndexVM;
 use Illuminate\Support\Facades\DB;
@@ -45,7 +43,11 @@ class CategoryController extends Controller
             $category = CategoryStoreAction::execute($categoryDTO);
 
             $category->updateRelation('translations', $data['translations'] ?? []);
+
             $category->updateRelation('images', $data['images'] ?? []);
+
+            if (isset($data['pages']))
+                $category->pages()->sync($data['pages']);
 
             return $category;
         });
@@ -65,6 +67,8 @@ class CategoryController extends Controller
                 $category->updateRelation('translations', $data['translations']);
             if (isset($data['images']))
                 $category->updateRelation('images', $data['images']);
+            if (isset($data['pages']))
+                $category->pages()->sync($data['pages']);
             return $category;
         });
 

@@ -12,9 +12,9 @@ class CategoryStoreAction
 {
     public static function execute(
         CategoryDTO $categoryDTO
-    ){
+    ):Category{
 
-        $category = new Category($categoryDTO->toArray());
+        $category = new Category(array_null_filter($categoryDTO->toArray()));
         $category->save();
         return $category;
     }

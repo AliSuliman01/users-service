@@ -1,0 +1,37 @@
+{
+    "data": {
+        "name": "home_page",
+        "categories": [
+            {
+                "name": "header",
+                "categories": [
+                    {
+                        "name": "all"
+                    },
+                    {
+                        "name": "education"
+                    }
+                ]
+            },
+            {
+                "name": "body",
+                "categories": [
+                    {
+                        "name": "featured",
+                        "sequence": 1,
+                        "materials": [
+                            {},{},{}
+                        ]
+                    },
+                    {
+                        "name": "recommended",
+                        "sequence": 2,
+                        "materials": [
+                            {},{},{}
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

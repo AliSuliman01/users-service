@@ -11,10 +11,9 @@ use Illuminate\Support\Facades\Auth;
 class LanguageDestroyAction
 {
     public static function execute(
-        LanguageDTO   $languageDTO
+        Language $language
     ){
 
-        $language = Language::find($languageDTO->id);
         $language->delete();
         return $language;
     }

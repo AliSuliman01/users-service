@@ -1,0 +1,47 @@
+{
+    "tables": [
+        {
+            "table_name": "pages",
+            "entity_name": "Page",
+            "instance_name": "page",
+            "base_path": "Pages",
+            "operation": "crud",
+            "columns": [
+                {
+                    "type": "integer",
+                    "name": "id",
+                    "validation_rules": "integer|required"
+                },
+                {
+                    "type": "string",
+                    "name": "name",
+                    "validation_rules": "string|required"
+                }
+            ]
+        },
+        {
+            "table_name": "page_category",
+            "entity_name": "PageCategory",
+            "instance_name": "pageCategory",
+            "base_path": "Pages\\PageCategory",
+            "operation": "crud",
+            "columns": [
+                {
+                    "type": "integer",
+                    "name": "id",
+                    "validation_rules": "integer|required"
+                },
+                {
+                    "type": "integer",
+                    "name": "category_id",
+                    "validation_rules": "integer|required"
+                },
+                {
+                    "type": "integer",
+                    "name": "page_id",
+                    "validation_rules": "integer|required"
+                }
+            ]
+        }
+    ]
+}

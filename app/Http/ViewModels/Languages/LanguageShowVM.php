@@ -10,18 +10,15 @@ use Illuminate\Contracts\Support\Arrayable;
 class LanguageShowVM implements Arrayable
 {
 
-    private $languageId;
+    private $language;
 
-    public function __construct($props)
+    public function __construct(Language $language)
     {
-        $this->languageId = $props['id'] ;
+        $this->language = $language ;
     }
 
-    private function get_Language(){
-        return Language::find($this->languageId);
-    }
-    public function toArray(): array
+    public function toArray()
     {
-        return  $this->get_Language()->toArray();
+        return $this->language;
     }
 }

@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Languages;
 
 
+use App\Domain\Languages\Model\Language;
 use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Domain\Languages\Actions\LanguageStoreAction;
@@ -12,8 +13,6 @@ use App\Domain\Languages\Actions\LanguageUpdateAction;
 use App\Domain\Languages\DTO\LanguageDTO;
 use App\Http\Requests\Languages\LanguageStoreRequest;
 use App\Http\Requests\Languages\LanguageUpdateRequest;
-use App\Http\Requests\Languages\LanguageDestroyRequest;
-use App\Http\Requests\Languages\LanguageShowRequest;
 use App\Http\ViewModels\Languages\LanguageShowVM;
 use App\Http\ViewModels\Languages\LanguageIndexVM;
 
@@ -25,9 +24,9 @@ class LanguageController extends Controller
         return response()->json(Response::success((new LanguageIndexVM())->toArray()));
     }
 
-    public function show(LanguageShowRequest $request){
+    public function show(Language $language){
 
-        return response()->json(Response::success((new LanguageShowVM(['id' => $request->route('id')]))->toArray()));
+        return response()->json(Response::success((new LanguageShowVM($language))->toArray()));
     }
 
     public function store(LanguageStoreRequest $request){
@@ -37,7 +36,7 @@ class LanguageController extends Controller
 
         $language = LanguageStoreAction::execute($languageDTO);
 
-        return response()->json(Response::success((new LanguageShowVM($language->toArray()))->toArray()));
+        return response()->json(Response::success((new LanguageShowVM($language))->toArray()));
     }
 
     public function update(LanguageUpdateRequest $request){
@@ -47,12 +46,12 @@ class LanguageController extends Controller
 
         $language = LanguageUpdateAction::execute($languageDTO);
 
-        return response()->json(Response::success((new LanguageShowVM($language->toArray()))->toArray()));
+        return response()->json(Response::success((new LanguageShowVM($language))->toArray()));
     }
 
-    public function destroy(LanguageDestroyRequest $request){
+    public function destroy(Language $language){
 
-        return response()->json(Response::success(LanguageDestroyAction::execute(LanguageDTO::fromRequest($request->validated()))));
+        return response()->json(Response::success(LanguageDestroyAction::execute($language)));
     }
 
 }
