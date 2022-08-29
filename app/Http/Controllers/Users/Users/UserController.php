@@ -43,7 +43,7 @@ class UserController extends Controller
         if(!Hash::check($request->password, $user->password)){
             return response()->json(Response::error('invalid credentials'));
         }
-        $token = $user->createToken('personal access token',$user->arrayOrRoles() ?? []);
+        $token = $user->createToken('personal access token',['*']);
         $user->setAttribute('token', $token->accessToken);
         return response()->json(Response::success($user));
     }

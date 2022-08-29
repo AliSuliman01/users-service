@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function arrayOfRoles()
     {
-
+        return $this->role()->pluck('id')->toArray();
     }
 
     public function role()
