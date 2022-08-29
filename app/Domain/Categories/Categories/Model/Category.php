@@ -10,7 +10,6 @@ use App\Domain\Pages\Model\Page;
 use App\Domain\Pages\PageCategory\Model\PageCategory;
 use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\App;
 

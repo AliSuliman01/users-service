@@ -3,11 +3,11 @@
 namespace App\Domain\Levels\LevelTranslation\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\Relations\Concerns\AsPivot;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class LevelTranslation extends Model
+class LevelTranslation extends SmartModel
 {
     use HasFactory, SoftDeletes, AsPivot;
 

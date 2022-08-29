@@ -3,10 +3,10 @@
 namespace App\Domain\Languages\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Language extends Model
+class Language extends SmartModel
 {
     use HasFactory, SoftDeletes;
 

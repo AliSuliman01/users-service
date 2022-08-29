@@ -3,10 +3,10 @@
 namespace App\Domain\Categories\CategoryImages\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CategoryImage extends Model
+class CategoryImage extends SmartModel
 {
     use HasFactory, SoftDeletes;
 

@@ -3,11 +3,11 @@
 namespace App\Domain\Materials\MaterialCategory\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\Relations\Concerns\AsPivot;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MaterialCategory extends Model
+class MaterialCategory extends SmartModel
 {
     use HasFactory, SoftDeletes, AsPivot;
 

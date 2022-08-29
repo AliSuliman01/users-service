@@ -4,10 +4,10 @@ namespace App\Domain\Users\Activities\ActivityTypes\ActivityTypes\Model;
 
 use App\Domain\Users\Activities\ActivityTypes\ActivityTypeTranslations\Model\ActivityTypeTranslation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ActivityType extends Model
+class ActivityType extends SmartModel
 {
     use HasFactory, SoftDeletes;
 

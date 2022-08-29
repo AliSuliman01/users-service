@@ -12,9 +12,9 @@ class GetLevelVM implements Arrayable
 
     private $level;
 
-    public function __construct($level)
+    public function __construct(Level $level)
     {
-        $this->level = $level;
+        $this->level = $level->load(['translation']);
     }
 
     public function toArray()

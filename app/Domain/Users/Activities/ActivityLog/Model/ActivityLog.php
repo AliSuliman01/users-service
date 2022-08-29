@@ -4,10 +4,10 @@ namespace App\Domain\Users\Activities\ActivityLog\Model;
 
 use App\Domain\Users\Activities\ActivityTypes\ActivityTypes\Model\ActivityType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ActivityLog extends Model
+class ActivityLog extends SmartModel
 {
     use HasFactory,SoftDeletes;
 

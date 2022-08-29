@@ -3,10 +3,10 @@
 namespace App\Domain\Users\Activities\Devices\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Device extends Model
+class Device extends SmartModel
 {
     use HasFactory,SoftDeletes;
     protected $table = "devices";

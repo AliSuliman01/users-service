@@ -4,11 +4,11 @@ namespace App\Domain\Tips\Tips\Model;
 
 use App\Domain\Tips\TipTranslation\Model\TipTranslation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\App;
 
-class Tip extends Model
+class Tip extends SmartModel
 {
     use HasFactory, SoftDeletes;
 

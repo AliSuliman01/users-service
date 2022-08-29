@@ -3,10 +3,10 @@
 namespace App\Domain\Users\Activities\DeviceType\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DeviceType extends Model
+class DeviceType extends SmartModel
 {
     use HasFactory , SoftDeletes;
 

@@ -5,10 +5,10 @@ namespace App\Domain\Pages\Model;
 use App\Domain\Categories\Categories\Model\Category;
 use App\Domain\Pages\PageCategory\Model\PageCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Page extends Model
+class Page extends SmartModel
 {
     use HasFactory, SoftDeletes;
 

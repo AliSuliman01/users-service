@@ -32,7 +32,7 @@ class UserController extends Controller
 
 
         $token = $user->createToken('personal access token',$user->arrayOfRoles() ?? []);
-        $user->setAttribute('token', $token->accessToken);
+        $user->setAttribute('access_token', $token->accessToken);
 
         return response()->json(Response::success($user), 200);
     }

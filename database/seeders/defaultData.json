@@ -122,5 +122,40 @@
             "categories": [
             ]
         }
+    ],
+    "material_statuses": [
+        {
+            "id": 1,
+            "translations": [
+                {
+                    "id": 1,
+                    "language_code": "en",
+                    "material_status_id": 1,
+                    "name": "completed"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "translations": [
+                {
+                    "id": 2,
+                    "language_code": "en",
+                    "material_status_id": 2,
+                    "name": "out dated"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "translations": [
+                {
+                    "id": 3,
+                    "language_code": "en",
+                    "material_status_id": 3,
+                    "name": "in progress"
+                }
+            ]
+        }
     ]
 }

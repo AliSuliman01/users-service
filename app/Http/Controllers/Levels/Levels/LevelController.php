@@ -18,43 +18,55 @@ use App\Http\ViewModels\Levels\Levels\GetAllLevelsVM;
 
 class LevelController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('datatable_adapters')->only(['index']);
-        $this->middleware('auth.rest')->only(['store','update','destroy']);
+        $this->middleware('auth:api')->only(['store', 'update', 'destroy']);
     }
-    public function index(){
+
+    public function index()
+    {
 
         return response()->json(Response::success((new GetAllLevelsVM())->toArray()));
     }
 
-    public function show(Level $level){
+    public function show(Level $level)
+    {
 
         return response()->json(Response::success((new GetLevelVM($level))->toArray()));
     }
 
-    public function store(StoreLevelRequest $request){
+    public function store(StoreLevelRequest $request)
+    {
 
-        $data = $request->validated() ;
+        $data = $request->validated();
 
         $levelDTO = LevelDTO::fromRequest($data);
 
         $level = StoreLevelAction::execute($levelDTO);
 
+        $level->updateRelation('translations', $data['translations']);
+
         return response()->json(Response::success((new GetLevelVM($level))->toArray()));
     }
 
-    public function update(Level $level, UpdateLevelRequest $request){
+    public function update(Level $level, UpdateLevelRequest $request)
+    {
 
-        $data = $request->validated() ;
+        $data = $request->validated();
 
         $levelDTO = LevelDTO::fromRequest($data);
 
         $level = UpdateLevelAction::execute($level, $levelDTO);
 
+        if (isset($data['translations']))
+            $level->updateRelation('translations', $data['translations']);
+
         return response()->json(Response::success((new GetLevelVM($level))->toArray()));
     }
 
-    public function destroy(Level $level){
+    public function destroy(Level $level)
+    {
 
         return response()->json(Response::success(DestroyLevelAction::execute($level)));
     }

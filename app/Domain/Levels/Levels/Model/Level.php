@@ -4,11 +4,11 @@ namespace App\Domain\Levels\Levels\Model;
 
 use App\Domain\Levels\LevelTranslation\Model\LevelTranslation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\SmartModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\App;
 
-class Level extends Model
+class Level extends SmartModel
 {
     use HasFactory, SoftDeletes;
 

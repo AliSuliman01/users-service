@@ -1,29 +1,10 @@
 {
     "tables": [
         {
-            "table_name": "pages",
-            "entity_name": "Page",
-            "instance_name": "page",
-            "base_path": "Pages",
-            "operation": "crud",
-            "columns": [
-                {
-                    "type": "integer",
-                    "name": "id",
-                    "validation_rules": "integer|required"
-                },
-                {
-                    "type": "string",
-                    "name": "name",
-                    "validation_rules": "string|required"
-                }
-            ]
-        },
-        {
-            "table_name": "page_category",
-            "entity_name": "PageCategory",
-            "instance_name": "pageCategory",
-            "base_path": "Pages\\PageCategory",
+            "table_name": "specialisation_course",
+            "entity_name": "SpecialisationCourse",
+            "instance_name": "specialisationCourse",
+            "base_path": "Materials\\Specialisations\\SpecialisationCourse",
             "operation": "crud",
             "columns": [
                 {
@@ -33,12 +14,12 @@
                 },
                 {
                     "type": "integer",
-                    "name": "category_id",
+                    "name": "specialisation_id",
                     "validation_rules": "integer|required"
                 },
                 {
                     "type": "integer",
-                    "name": "page_id",
+                    "name": "course_id",
                     "validation_rules": "integer|required"
                 }
             ]

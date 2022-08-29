@@ -10,6 +10,6 @@ class GetAllLevelsVM implements Arrayable
 {
     public function toArray()
     {
-        return Level::query()->get();
+        return Level::with(['translation'])->get();
     }
 }
