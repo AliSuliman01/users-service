@@ -17,11 +17,11 @@ abstract class ApiFormRequest extends FormRequest
     {
         $e = (new ValidationException($validator));
 
-        throw new RequestException(collect($e->errors())->values()->first()[0],$e->getTrace(),422);
+        throw new RequestException(collect($e->errors())->first()[0],$e->getTrace(),422);
     }
     public function validationData(): array
     {
-        return $this->json()->all() + $this->route()->parameters;
+        return $this->all() + $this->route()->parameters;
     }
     public abstract function rules();
 
