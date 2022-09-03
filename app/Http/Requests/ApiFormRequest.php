@@ -21,7 +21,7 @@ abstract class ApiFormRequest extends FormRequest
     }
     public function validationData(): array
     {
-        return $this->all() ; // $this->route()->parameters
+        return $this->json()->all() + $this->route()->parameters;
     }
     public abstract function rules();
 

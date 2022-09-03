@@ -38,7 +38,6 @@ class UserController extends Controller
     }
 
     public function log_in(UserLogInRequest $request){
-        dd($request->validated());
         $user = (new UserShowVM(UserDTO::fromRequest($request->validated())))->toArray();
 
         if(!Hash::check($request->password, $user->password)){
