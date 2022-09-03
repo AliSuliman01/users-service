@@ -17,7 +17,7 @@ abstract class ApiFormRequest extends FormRequest
     {
         $e = (new ValidationException($validator));
 
-        throw new RequestException(collect($e->errors())->values()[0][0],$e->getTrace(),400);
+        throw new RequestException(collect($e->errors())->values()->first()[0],$e->getTrace(),422);
     }
     public function validationData(): array
     {
