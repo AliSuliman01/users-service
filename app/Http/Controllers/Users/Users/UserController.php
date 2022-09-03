@@ -41,7 +41,7 @@ class UserController extends Controller
         $user = (new UserShowVM(UserDTO::fromRequest($request->validated())))->toArray();
 
         if(!Hash::check($request->password, $user->password)){
-            return response()->json(Response::error('invalid credentials'));
+            return response()->json(Response::error('invalid credentials'),422);
         }
         $token = $user->createToken('personal access token',['*']);
         $user->setAttribute('token', $token->accessToken);
