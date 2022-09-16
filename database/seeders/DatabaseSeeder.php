@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $defaultData = json_decode(file_get_contents(database_path('seeders/defaultData.json')), true);
+        $defaultData = json_decode(file_get_contents(__DIR__.'/defaultData.json'), true);
 
         Language::query()->insert($defaultData['languages']);
 

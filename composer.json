@@ -20,7 +20,8 @@
         "laravel/tinker": "^2.5",
         "spatie/data-transfer-object": "^3.7",
         "jenssegers/agent": "3.0.x-dev",
-        "yajra/laravel-datatables-oracle": "^9.18"
+        "yajra/laravel-datatables-oracle": "^9.18",
+        "alisuliman/micro_features": "^2.0.0"
     },
     "require-dev": {
         "alisuliman/code_generator": "^1.0",
@@ -78,7 +79,12 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
+
     "repositories":[
+        {
+            "type": "vcs",
+            "url": "git@github.com:AliSuliman01/micro_features.git"
+        },
         {
             "type": "vcs",
             "url": "git@github.com:AliSuliman01/code_gen.git"
