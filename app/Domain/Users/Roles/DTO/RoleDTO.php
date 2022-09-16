@@ -8,17 +8,17 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 class RoleDTO extends DataTransferObject
 {
-	/* @var integer|null */
+    /* @var integer|null */
     public $id;
     /* @var string|null */
-public $name;
+    public $name;
 
 
     public static function fromRequest($request)
     {
         return new self([
-            'id'        =>  $request['id'] ?? null,
-            'name' 					=> $request['name'] ?? null ,
+            'id' => $request['id'] ?? null,
+            'name' => $request['name'] ?? null,
 
         ]);
     }

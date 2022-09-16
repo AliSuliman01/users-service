@@ -33,6 +33,10 @@ class UserDTO extends DataTransferObject
     /**
      * @var string|null
      */
+    public $profile_picture ;
+    /**
+     * @var string|null
+     */
     public $remember_token;
 
 
@@ -45,6 +49,7 @@ class UserDTO extends DataTransferObject
             'phone_number'=> $request['phone_number'] ?? null,
             'password'=> $request['password'] ?? null,
             'remember_token'=> $request['remember_token'] ?? null,
+            'profile_picture'=> $request['profile_picture'] ?? null,
         ]);
     }
 }

@@ -9,7 +9,7 @@ use Yajra\DataTables\Facades\DataTables;
 class UserIndexVM implements Arrayable
 {
     private function data(){
-        return DataTables::eloquent(User::query())->toJson();
+        return DataTables::eloquent(User::with(['role'])->select(['id','name','email','phone_number', 'profile_picture', 'created_at']))->toJson();
     }
     /**
      * @inheritDoc
