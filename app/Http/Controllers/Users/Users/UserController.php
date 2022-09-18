@@ -12,6 +12,7 @@ use App\Domain\Users\Users\DTO\UserDTO;
 use App\Http\Requests\Users\Users\UserLogInRequest;
 use App\Http\Requests\Users\Users\UserStoreRequest;
 use App\Http\Requests\Users\Users\UserSignUpRequest;
+use App\Http\Requests\Users\Users\UserUpdateRequest;
 use App\Http\ViewModels\Users\Users\UserIndexVM;
 use App\Http\ViewModels\Users\Users\UserShowVM;
 use App\Notifications\VerificationMailNotification;
@@ -63,7 +64,7 @@ class UserController extends Controller
         return response()->json(success((new UserShowVM($user))->toArray()));
     }
 
-    public function update(User $user, UserStoreRequest $request){
+    public function update(User $user, UserUpdateRequest $request){
 
         $data = $request->validated();
         $user->update(UserDTO::fromRequest($data)->toArray());
