@@ -59,15 +59,15 @@ class UserController extends Controller
     public function store(UserRequest $request){
 
         $data = $request->validated();
-        $user = User::query()->create($data);
-        return response()->json(success($user));
+        $user = User::query()->create(UserDTO::fromRequest($data)->toArray());
+        return response()->json(success((new UserShowVM($user))->toArray()));
     }
 
     public function update(User $user, UserRequest $request){
 
         $data = $request->validated();
-        $user->update($data);
-        return response()->json(success($user));
+        $user->update(UserDTO::fromRequest($data)->toArray());
+        return response()->json(success((new UserShowVM($user))->toArray()));
 
     }
 
