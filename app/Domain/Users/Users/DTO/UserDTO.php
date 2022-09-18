@@ -38,6 +38,14 @@ class UserDTO extends DataTransferObject
      * @var string|null
      */
     public $remember_token;
+    /**
+     * @var string|null
+     */
+    public $reset_password_token;
+    /**
+     * @var string|null
+     */
+    public $password_reset_at;
 
 
     public static function fromRequest($request){
@@ -50,6 +58,8 @@ class UserDTO extends DataTransferObject
             'password'=> $request['password'] ?? null,
             'remember_token'=> $request['remember_token'] ?? null,
             'profile_picture'=> $request['profile_picture'] ?? null,
+            'reset_password_token'=> $request['reset_password_token'] ?? null,
+            'password_reset_at'=> $request['password_reset_at'] ?? null,
         ]);
     }
 }

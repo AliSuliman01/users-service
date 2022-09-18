@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers\Users\Users;
 
+use AliSuliman\MicroFeatures\Exceptions\Exception;
+use AliSuliman\MicroFeatures\Helpers\StatusCode;
 use App\Domain\Users\Users\Actions\UserStoreAction;
 use App\Domain\Users\Users\Model\User;
 use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Domain\Users\Users\DTO\UserDTO;
 use App\Http\Requests\Users\Users\UserLogInRequest;
+use App\Http\Requests\Users\Users\UserRequest;
 use App\Http\Requests\Users\Users\UserSignUpRequest;
 use App\Http\ViewModels\Users\Users\UserIndexVM;
 use App\Http\ViewModels\Users\Users\UserShowVM;
+use App\Notifications\VerificationMailNotification;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {
@@ -28,8 +33,11 @@ class UserController extends Controller
         $userDTO = UserDTO::fromRequest($request->validated());
         $user = UserStoreAction::execute($userDTO);
 
-        // TODO: send sms or gmail verification message
-
+        try {
+            Notification::route('mail', $user->email)->notify(new VerificationMailNotification($user));
+        }catch (\Throwable $e){
+            throw new Exception($e->getMessage(),$e->getTrace(), StatusCode::UNPROCESSABLE_ENTITY);
+        }
 
         $token = $user->createToken('personal access token',$user->arrayOfRoles() ?? []);
         $user->setAttribute('access_token', $token->accessToken);
@@ -48,11 +56,22 @@ class UserController extends Controller
         return response()->json(Response::success($user));
     }
 
-    public function update(){
+    public function store(UserRequest $request){
+
+        $data = $request->validated();
+        $user = User::query()->create($data);
+        return response()->json(success($user));
+    }
+
+    public function update(User $user, UserRequest $request){
+
+        $data = $request->validated();
+        $user->update($data);
+        return response()->json(success($user));
 
     }
 
-    public function destroy(){
-
+    public function destroy(User $user){
+        return response()->json(success($user->delete()));
     }
 }

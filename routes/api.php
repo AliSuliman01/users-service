@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('categories', \App\Http\Controllers\Categories\Categories\CategoryController::class);
 Route::get('routes', function(){
     foreach (Route::getRoutes() as $route){
         if (str_contains($route->uri, '/users'))
