@@ -13,7 +13,6 @@ class UserRequest extends ApiFormRequest
             'email' => 'required|email|unique:users,email,NULL,id,deleted_at,NULL',
             'phone_number' => 'nullable|string',
             'profile_picture' => 'nullable|string',
-            'password' => 'required|string|min:8',
         ];
     }
 }
