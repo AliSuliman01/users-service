@@ -18,7 +18,6 @@ class UserShowVM implements Arrayable
             $this->user = User::where('email', $user->email)->first();
         else
             $this->user = User::where('phone_number', $user->phone_number)->first();
-
     }
 
     /**

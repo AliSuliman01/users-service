@@ -10,7 +10,7 @@ use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Domain\Users\Users\DTO\UserDTO;
 use App\Http\Requests\Users\Users\UserLogInRequest;
-use App\Http\Requests\Users\Users\UserRequest;
+use App\Http\Requests\Users\Users\UserStoreRequest;
 use App\Http\Requests\Users\Users\UserSignUpRequest;
 use App\Http\ViewModels\Users\Users\UserIndexVM;
 use App\Http\ViewModels\Users\Users\UserShowVM;
@@ -56,14 +56,14 @@ class UserController extends Controller
         return response()->json(Response::success($user));
     }
 
-    public function store(UserRequest $request){
+    public function store(UserStoreRequest $request){
 
         $data = $request->validated();
-        $user = User::query()->create(UserDTO::fromRequest($data)->toArray());
+        $user = User::query()->create(array_null_filter(UserDTO::fromRequest($data)->toArray()));
         return response()->json(success((new UserShowVM($user))->toArray()));
     }
 
-    public function update(User $user, UserRequest $request){
+    public function update(User $user, UserStoreRequest $request){
 
         $data = $request->validated();
         $user->update(UserDTO::fromRequest($data)->toArray());
