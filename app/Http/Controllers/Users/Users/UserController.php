@@ -67,7 +67,7 @@ class UserController extends Controller
     public function update(User $user, UserUpdateRequest $request){
 
         $data = $request->validated();
-        $user->update(UserDTO::fromRequest($data)->toArray());
+        $user->update(array_null_filter(UserDTO::fromRequest($data)->toArray()));
         return response()->json(success((new UserShowVM($user))->toArray()));
 
     }
