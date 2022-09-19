@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class UserStoreAction
 {
     public static function execute(UserDTO $userDTO){
-        $user = new User($userDTO->toArray());
+        $user = new User(array_null_filter($userDTO->toArray()));
         $user->password = Hash::make($userDTO->password);
         $user->save();
         return $user;

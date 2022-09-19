@@ -39,8 +39,8 @@ return [
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => env('MAIL_USERNAME', 'postmaster@sandbox1be864cd20604ac5a8cbbdf9d21c4329.mailgun.org'),
+            'password' => env('MAIL_PASSWORD', '9e1bada97cb325ba1591577e34fef53d-680bcd74-99a85b82'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -92,7 +92,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'support@wannalearn.net'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
