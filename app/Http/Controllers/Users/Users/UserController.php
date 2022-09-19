@@ -23,6 +23,11 @@ use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only(['verify']);
+    }
+
     public function index(){
         return response()->json(Response::success((new UserIndexVM())->toArray()));
     }

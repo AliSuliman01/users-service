@@ -41,7 +41,7 @@ return [
             'provider' => 'users',
         ],
         'api' => [
-            'driver' => 'remote_access_token',
+            'driver' => 'passport',
             'provider' => 'users',
         ]
     ],
