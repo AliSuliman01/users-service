@@ -39,12 +39,13 @@ class UserController extends Controller
     public function sign_up(UserSignUpRequest $request){
 
         $userDTO = UserDTO::fromRequest($request->validated())->withVerificationToken();
+        $userDTO->role_id = 1;
         $user = UserStoreAction::execute($userDTO);
 
         try {
             Notification::route('mail', $user->email)->notify(new VerificationMailNotification($user));
         }catch (\Throwable $e){
-            throw new Exception($e->getMessage(),$e->getTrace(), StatusCode::UNPROCESSABLE_ENTITY);
+            throw new Exception($e->getMessage(), StatusCode::UNPROCESSABLE_ENTITY);
         }
 
         $token = $user->createToken('personal access token',$user->arrayOfRoles() ?? []);
