@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "alisuliman/micro_features",
-            "version": "2.1.4",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AliSuliman01/micro_features.git",
-                "reference": "44176a58e6e426fa59917777595cb2febb0d592b"
+                "reference": "9ed0c17ac85a956ce24ac306c25ef698e5905b60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AliSuliman01/micro_features/zipball/44176a58e6e426fa59917777595cb2febb0d592b",
-                "reference": "44176a58e6e426fa59917777595cb2febb0d592b",
+                "url": "https://api.github.com/repos/AliSuliman01/micro_features/zipball/9ed0c17ac85a956ce24ac306c25ef698e5905b60",
+                "reference": "9ed0c17ac85a956ce24ac306c25ef698e5905b60",
                 "shasum": ""
             },
             "require": {
@@ -64,10 +64,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/AliSuliman01/micro_features/tree/list",
+                "source": "https://github.com/AliSuliman01/micro_features/tree/2.2.2",
                 "issues": "https://github.com/AliSuliman01/micro_features/issues"
             },
-            "time": "2022-09-18T15:20:15+00:00"
+            "time": "2022-09-19T02:29:56+00:00"
         },
         {
             "name": "arrilot/laravel-widgets",
@@ -2602,16 +2602,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.5.0",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "b7bb46dee497b57e0c378315f2a711824cb46c38"
+                "reference": "f14993c6e394450ac4649da35264df0544d0234e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/b7bb46dee497b57e0c378315f2a711824cb46c38",
-                "reference": "b7bb46dee497b57e0c378315f2a711824cb46c38",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f14993c6e394450ac4649da35264df0544d0234e",
+                "reference": "f14993c6e394450ac4649da35264df0544d0234e",
                 "shasum": ""
             },
             "require": {
@@ -2673,7 +2673,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.5.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.5.1"
             },
             "funding": [
                 {
@@ -2689,7 +2689,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-17T21:06:02+00:00"
+            "time": "2022-09-18T18:23:19+00:00"
         },
         {
             "name": "league/mime-type-detection",

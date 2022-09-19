@@ -47,7 +47,7 @@ class VerificationMailNotification extends Notification
                     ->from(config('mail.from.address'))
                     ->subject('email verification')
                     ->line("Hi there")
-                    ->line("Your one-time verification passcode is {$this->user->verification_token}")
+                    ->line("Your one-time verification passcode is {$this->user->verification_code}")
                     ->line("Thank you")
                     ->line("The WannaLearn Team");
     }

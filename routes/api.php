@@ -20,3 +20,7 @@ Route::get('routes', function(){
             echo $route->getActionMethod() . ' : ' . $route->uri . "<br />";
     }
 });
+
+Route::get('testLog',function (){
+    return response()->json("hi");
+})->middleware(\AliSuliman\MicroFeatures\Http\Middleware\Log::class);

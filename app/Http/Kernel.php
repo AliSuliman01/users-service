@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use AliSuliman\MicroFeatures\Http\Middleware\Log;
 use App\Http\Middleware\DatatableAdapterMiddleware;
 use App\Http\Middleware\DatatableFiltersAdapterMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -23,6 +24,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        Log::class
     ];
 
     /**

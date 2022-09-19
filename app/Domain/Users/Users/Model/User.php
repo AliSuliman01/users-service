@@ -34,6 +34,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function verify()
+    {
+        $this->verification_token = null;
+        $this->email_verified_at = now();
+        $this->save();
+    }
     public function arrayOfRoles()
     {
         return $this->role()->pluck('id')->toArray();

@@ -13,9 +13,11 @@ use App\Http\Requests\Users\Users\UserLogInRequest;
 use App\Http\Requests\Users\Users\UserStoreRequest;
 use App\Http\Requests\Users\Users\UserSignUpRequest;
 use App\Http\Requests\Users\Users\UserUpdateRequest;
+use App\Http\Requests\Users\Users\UserVerifyRequest;
 use App\Http\ViewModels\Users\Users\UserIndexVM;
 use App\Http\ViewModels\Users\Users\UserShowVM;
 use App\Notifications\VerificationMailNotification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 
@@ -31,7 +33,7 @@ class UserController extends Controller
 
     public function sign_up(UserSignUpRequest $request){
 
-        $userDTO = UserDTO::fromRequest($request->validated());
+        $userDTO = UserDTO::fromRequest($request->validated())->withVerificationToken();
         $user = UserStoreAction::execute($userDTO);
 
         try {
@@ -55,6 +57,17 @@ class UserController extends Controller
         $token = $user->createToken('personal access token',['*']);
         $user->setAttribute('token', $token->accessToken);
         return response()->json(Response::success($user));
+    }
+
+    public function verify(UserVerifyRequest $request){
+        $user = Auth::user();
+        if ($user->verification_token === $request->verification_token){
+            $user->verify();
+            return response()->json(success(true));
+        }else{
+            return response()->json(success(false));
+        }
+
     }
 
     public function store(UserStoreRequest $request){
