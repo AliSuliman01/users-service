@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://wl-users-service.herokuapp.com'),
+    'url' => 'https://wl-users-service.herokuapp.com',
 
     'asset_url' => env('ASSET_URL', null),
 
