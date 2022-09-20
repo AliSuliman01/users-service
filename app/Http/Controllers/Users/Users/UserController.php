@@ -42,12 +42,6 @@ class UserController extends Controller
         $userDTO->role_id = 1;
         $user = UserStoreAction::execute($userDTO);
 
-        try {
-            Notification::route('mail', $user->email)->notify(new VerificationMailNotification($user));
-        }catch (\Throwable $e){
-            throw new Exception($e->getMessage(), StatusCode::UNPROCESSABLE_ENTITY);
-        }
-
         $token = $user->createToken('personal access token',$user->arrayOfRoles() ?? []);
         $user->setAttribute('access_token', $token->accessToken);
 
